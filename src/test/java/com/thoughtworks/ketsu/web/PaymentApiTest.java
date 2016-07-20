@@ -8,6 +8,7 @@ import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -73,6 +74,7 @@ public class PaymentApiTest extends ApiSupport {
         Map payInfo = response.readEntity(Map.class);
         assertThat(payInfo.get("pay_type"), is(payment.getType().name()));
         assertThat(payInfo.get("amount"), is(payment.getAmount()));
+        assertThat(new DateTime(payInfo.get("created_at")), is(payment.getCreatedAt()));
         assertThat(payInfo.get("uri"), is(paymentBaseUrl));
         assertThat(payInfo.get("order_uri"), is("users/" + user.getId() + "/orders/" + order.getId()));
 

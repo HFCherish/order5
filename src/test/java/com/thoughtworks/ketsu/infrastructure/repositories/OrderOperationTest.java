@@ -54,6 +54,6 @@ public class OrderOperationTest {
         List<Order> fetched = user.getAllOrders();
 
         assertThat(fetched.size(), is(1));
-
+        assertThat(fetched.get(0).getId(), is(order.getId()));
     }
 }

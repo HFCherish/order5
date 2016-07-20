@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Map;
 
 public class OrdersApi {
     private User user;
@@ -18,7 +19,9 @@ public class OrdersApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response buildOrder(@Context Routes routes) {
+    public Response buildOrder(Map orderInfo,
+                               @Context Routes routes) {
+        user.placeOrder(orderInfo);
         return Response.created(routes.orderUrl(user.getId(), 89l)).build();
     }
 }

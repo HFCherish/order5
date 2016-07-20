@@ -14,12 +14,11 @@
 	4. should return 404 when no products in db --5 :: 1
 6. get all products
 	1. should return 200 when get products (resource.get) --10 :: 2
-	2. should the response body contains at least  one item info (resource.get, record) --10 ::
-	3. should that item contains name, description, price, uri info (resource.get, record) --10 ::
 	3. --------------------------------------------------
-	2. should have tried to search from database and should able to get a least one product if database is not empty (repo.findAll) --5 ::
+	2. should have tried to search from database and should able to get a least one product if database is not empty (repo.findAll) --5 :: 3
 	3. should that one product's id are the same as expected (mapper-findAll) --10 ::
 	3. --------------------------------------------------
+	2. should the response body contains at least  one item info (resource.get, record) --10 ::
 	2. should the response body contains right uri, name, description, price info (resource.get, record) --5 ::
 	4. should return empty when no products in db --5 ::
 11. user register

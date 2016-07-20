@@ -23,7 +23,7 @@
 	4. should return empty when no products in db --5 :: 1
 11. user register
 	11. should return 201 when register a new user (resource.post) --10 :: 4
-	12. should return 400 when the registered name is not composed of letters and numbers, at least one (resource.post) -- 10 ::
+	12. should return 400 when the registered name is not composed of letters and numbers, at least one (resource.post) -- 10 :: 9
 	13. should include creation uri in header location (resource.post) --10 ::
 	3. --------------------------------------------------
 	14. should have tried to save the user info into database and should able to get a user after registered (repo.findById) --10 ::

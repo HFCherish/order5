@@ -10,10 +10,12 @@ public class TestHelper {
 
     public static final String PRODUCT_NAME = "Imran";
     public static final String PRODUCT_DESC = "teacher";
+    public static final String USER_NAME = "Petrina";
+    public static final String INVALID_USER_NAME = ";LH8";
 
-    public static Map<String, Object> userJsonForTest() {
+    public static Map<String, Object> userJsonForTest(String name) {
         return new HashMap() {{
-            put("name", "Petrina");
+            put("name", name);
         }};
     }
 

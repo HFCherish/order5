@@ -59,6 +59,7 @@ public class Order implements Record{
             put("address", getAddress());
             put("phone", getPhone());
             put("created_at", getCreatedAt());
+            put("total_price", getTotalPrice());
             put("order_items", items);
         }};
     }
@@ -66,5 +67,13 @@ public class Order implements Record{
     @Override
     public Map<String, Object> toJson(Routes routes) {
         return toRefJson(routes);
+    }
+
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for(OrderItem item: orderItems) {
+            totalPrice += item.getAmount() * item.getQuantity();
+        }
+        return totalPrice;
     }
 }

@@ -16,4 +16,6 @@ public class Payment {
     public double getAmount() {
         return amount;
     }
+
+
 }

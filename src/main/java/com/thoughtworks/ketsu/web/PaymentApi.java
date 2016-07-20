@@ -3,12 +3,11 @@ package com.thoughtworks.ketsu.web;
 import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.domain.Payment;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class PaymentApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Payment getPay() {
-        return new Payment();
+    public PaymentResponseBean getPay(@Context UriInfo uriInfo) {
+        return new PaymentResponseBean(order.getPayment().map(payment -> payment).orElseThrow(()->new WebApplicationException(Response.Status.NOT_FOUND)), uriInfo);
     }
 }

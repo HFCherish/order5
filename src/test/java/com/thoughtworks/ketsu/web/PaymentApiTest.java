@@ -41,7 +41,7 @@ public class PaymentApiTest extends ApiSupport {
         user = prepareUser(userRepository);
         product = prepareProduct(productRepository);
         order = prepareOrder(user, product);
-        paymentBaseUrl = "/users/" + user.getId() + "/orders/" + order.getId() + "/payment";
+        paymentBaseUrl = "users/" + user.getId() + "/orders/" + order.getId() + "/payment";
     }
 
     @Test
@@ -70,6 +70,11 @@ public class PaymentApiTest extends ApiSupport {
         Response response = get(paymentBaseUrl);
 
         assertThat(response.getStatus(), is(200));
+        Map payInfo = response.readEntity(Map.class);
+        assertThat(payInfo.get("pay_type"), is(payment.getType().name()));
+        assertThat(payInfo.get("amount"), is(payment.getAmount()));
+        assertThat(payInfo.get("uri"), is(paymentBaseUrl));
+        assertThat(payInfo.get("order_uri"), is("users/" + user.getId() + "/orders/" + order.getId()));
 
     }
 }

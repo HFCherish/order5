@@ -33,7 +33,7 @@
 11. get one user
     1. should 200 when get some user --5 :: 5
     1. should contains right uri, name, id info when get user --15 :: 5
-    1. should 404 when user doesn't exist --5 ::
+    1. should 404 when user doesn't exist --5 :: 1
 18. order creation
 	18. should return 201 when creating an order (resource.post) --15 ::
 	19. should include the creation uri in header location (resource.post) --2 ::

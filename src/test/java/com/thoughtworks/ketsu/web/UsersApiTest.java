@@ -53,4 +53,15 @@ public class UsersApiTest extends ApiSupport {
         assertThat(Long.valueOf(userInfo.get("id").toString()), is(user.getId()));
 
     }
+
+    @Test
+    public void should_404_when_get_user_given_invalid_id() {
+        User user = prepareUser(userRepository);
+        String getOneUrl = usersBaseUrl + "/1" + user.getId();
+
+        Response response = get(getOneUrl);
+
+        assertThat(response.getStatus(), is(404));
+
+    }
 }

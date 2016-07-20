@@ -23,6 +23,7 @@ public class PaymentApi {
             throw new IllegalArgumentException("must contains pay_type.");
         if(payInfo.get("amount") == null )
             throw new IllegalArgumentException("must contains amount.");
+        order.pay(payInfo);
         return Response.created(URI.create("")).build();
     }
 }

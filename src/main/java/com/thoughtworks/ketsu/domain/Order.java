@@ -4,10 +4,7 @@ import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 import org.joda.time.DateTime;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Order implements Record{
     private long id;
@@ -75,5 +72,13 @@ public class Order implements Record{
             totalPrice += item.getAmount() * item.getQuantity();
         }
         return totalPrice;
+    }
+
+    public void pay(Map payInfo) {
+
+    }
+
+    public Optional<Payment> getPayment(long orderId) {
+        return Optional.ofNullable(new Payment());
     }
 }

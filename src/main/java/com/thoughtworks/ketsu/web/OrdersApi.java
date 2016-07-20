@@ -1,12 +1,13 @@
 package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.User;
+import com.thoughtworks.ketsu.web.jersey.Routes;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.URI;
 
 public class OrdersApi {
     private User user;
@@ -17,7 +18,7 @@ public class OrdersApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response buildOrder() {
-        return Response.created(URI.create("")).build();
+    public Response buildOrder(@Context Routes routes) {
+        return Response.created(routes.orderUrl(user.getId(), 89l)).build();
     }
 }

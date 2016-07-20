@@ -16,6 +16,14 @@ public class OrderValidator implements Validator {
         List orderItems = (List)info.get("order_items");
         if( orderItems == null || orderItems.size() == 0)
             throw new IllegalArgumentException("must contains orderItems");
+
+        for( Object o: orderItems) {
+            Map item = (Map)o;
+            if( item.get("product_id") == null )
+                throw new IllegalArgumentException("item must contains product_id");
+            if( item.get("quantity") == null )
+                throw new IllegalArgumentException("item must contains quantity");
+        }
         return true;
 
     }

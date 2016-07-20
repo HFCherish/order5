@@ -45,7 +45,6 @@
 	2. should return 400 when the input doesn't contain name, address, phone --10 :: 4
 	4. should return 400 when the order contains 0 order item --10 ::
 	5. should return 400 when the order item doesn't exists --5 :: 4
-	2. should return 400 when the order item doesn't contain valid product\_id, quantity --5 ::
 27. get some order of some user
 	28. should return 200 when review some order of some user (resource.get) --15 ::
 	29. should the response body contain right uri info (resource.get) --15 ::

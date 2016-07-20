@@ -1,6 +1,6 @@
 #tasks ()
 2. product creation
-	2. should return 201 when create a product  (resource.post)  --10 ::
+	2. should return 201 when create a product  (resource.post)  --10 :: 6
 	3. should contain creation uri in header location (resource.post) --10 ::
 	4. should 400 when the product param is not complete --10 ::
 	4. --------------------------------------------------

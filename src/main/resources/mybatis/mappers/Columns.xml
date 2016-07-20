@@ -3,4 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="columns">
+    <sql id="order">
+        id,
+        user_id,
+        name,
+        address,
+        phone,
+        create_at,
+        product_id,
+        quantity,
+        amount
+    </sql>
 </mapper>

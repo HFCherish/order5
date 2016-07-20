@@ -7,6 +7,7 @@ import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -83,6 +84,10 @@ public class OrderApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(200));
         Map orderInfo = response.readEntity(Map.class);
         assertThat(orderInfo.get("uri"), is(getOneUrl));
+        assertThat(orderInfo.get("name"), is(order.getName()));
+        assertThat(orderInfo.get("address"), is(order.getAddress()));
+        assertThat(orderInfo.get("phone"), is(order.getPhone()));
+        assertThat(new DateTime(orderInfo.get("created_at")), is(order.getCreatedAt()));
 
     }
 }

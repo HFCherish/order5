@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.validators.ProductValidator;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
@@ -13,11 +14,15 @@ import java.util.Map;
 
 @Path("products")
 public class ProductApi {
+    @Context
+    ProductRepository productRepository;
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Map productInfo,
                            @Context Routes routes) {
         new ProductValidator().validate(productInfo);
+        productRepository.save(productInfo);
         return Response.created(routes.productUrl(null)).build();
     }
 }

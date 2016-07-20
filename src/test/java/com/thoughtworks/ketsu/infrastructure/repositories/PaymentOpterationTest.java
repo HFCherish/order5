@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.Payment;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.User;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
+import org.apache.ibatis.ognl.ASTAnd;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,9 +39,9 @@ public class PaymentOpterationTest {
         Map payInfo = paymentJsonForTest();
 
         order.pay(payInfo);
-        Optional<Payment> fetched = order.getPayment(7l);
+        Optional<Payment> fetched = order.getPayment();
 
         assertThat(fetched.isPresent(), is(true));
-
+        assertThat(fetched.get().getOrderId(), is(order.getId()));
     }
 }

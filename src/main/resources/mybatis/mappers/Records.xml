@@ -8,6 +8,11 @@
         <result property="name" column="name"/>
         <result property="description" column="description"/>
         <result property="price" column="price"/>
-
     </resultMap>
+
+    <resultMap id="user" type="com.thoughtworks.ketsu.domain.User">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+    </resultMap>
+
 </mapper>

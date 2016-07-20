@@ -47,6 +47,7 @@ public class OrderApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString(), containsString(orderBaseUrl));
+        assertThat(response.getLocation().toString().matches(".*/\\d+$"), is(true));
 
     }
 }

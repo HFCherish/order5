@@ -22,6 +22,6 @@ public class OrdersApi {
     public Response buildOrder(Map orderInfo,
                                @Context Routes routes) {
         user.placeOrder(orderInfo);
-        return Response.created(routes.orderUrl(user.getId(), 89l)).build();
+        return Response.created(routes.orderUrl(user.getId(), Long.valueOf(orderInfo.get("id").toString()))).build();
     }
 }

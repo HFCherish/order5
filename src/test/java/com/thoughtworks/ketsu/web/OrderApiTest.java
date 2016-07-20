@@ -53,7 +53,7 @@ public class OrderApiTest extends ApiSupport {
     }
 
     @Test
-    public void should_400_when_create_order_given_invalid_input() {
+    public void should_400_when_create_order_given_input_without_name() {
         Map orderInfo = orderJsonForTest(product);
 
         //name empty
@@ -62,4 +62,16 @@ public class OrderApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(400));
 
     }
+
+    @Test
+    public void should_400_when_create_order_given_input_without_order_items() {
+        Map orderInfo = orderJsonForTest(product);
+
+        //orderItems empty
+        orderInfo.remove("order_items");
+        Response response = post(orderBaseUrl, orderInfo);
+        assertThat(response.getStatus(), is(400));
+
+    }
+
 }

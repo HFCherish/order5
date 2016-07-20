@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.support;
 
+import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
@@ -26,6 +27,12 @@ public class TestHelper {
                 put("quantity", 2);
             }}));
         }};
+    }
+
+    public static Order prepareOrder(User user, Product product) {
+        Map info = orderJsonForTest(product);
+        user.placeOrder(info);
+        return user.getOrderById(Long.valueOf(info.get("id").toString())).get();
     }
 
     public static Map<String, Object> userJsonForTest(String name) {

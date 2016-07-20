@@ -1,11 +1,12 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.domain.User;
 import com.thoughtworks.ketsu.infrastructure.validators.OrderValidator;
 import com.thoughtworks.ketsu.web.jersey.Routes;
+import org.apache.ibatis.annotations.Param;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -25,5 +26,10 @@ public class OrdersApi {
         new OrderValidator().validate(orderInfo);
         user.placeOrder(orderInfo);
         return Response.created(routes.orderUrl(user.getId(), Long.valueOf(orderInfo.get("id").toString()))).build();
+    }
+
+    @Path("{id}")
+    public OrderApi getOrder(@Param("id") String id) {
+        return new OrderApi(new Order());
     }
 }

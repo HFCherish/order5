@@ -23,6 +23,6 @@ public class ProductApi {
                            @Context Routes routes) {
         new ProductValidator().validate(productInfo);
         productRepository.save(productInfo);
-        return Response.created(routes.productUrl(null)).build();
+        return Response.created(routes.productUrl(productInfo.get("id").toString())).build();
     }
 }

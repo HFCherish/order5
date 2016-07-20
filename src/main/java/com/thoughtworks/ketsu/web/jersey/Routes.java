@@ -13,7 +13,7 @@ public class Routes {
         baseUri = "/";
     }
 
-    public URI productUrl(Product product) {
-        return URI.create(baseUri + "products");
+    public URI productUrl(String prodId) {
+        return URI.create(baseUri + "products/" + prodId);
     }
 }

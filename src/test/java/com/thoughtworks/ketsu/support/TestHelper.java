@@ -17,6 +17,13 @@ public class TestHelper {
     public static final String USER_NAME = "Petrina";
     public static final String INVALID_USER_NAME = ";LH8";
 
+    public static Map<String, Object> paymentJsonForTest() {
+        return new HashMap() {{
+            put("pay_type", "CREDIT_CARD");
+            put("amount", 786);
+        }};
+    }
+
     public static Map<String, Object> orderJsonForTest(Product product) {
         return new HashMap() {{
             put("name", USER_NAME);

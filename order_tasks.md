@@ -61,9 +61,8 @@
 	29. should the response body contain at least one order info. (resource.get, record)  --10 ::
     29. should the response body contain right uri info (resource.get) --5 ::
     20. should the response body contain right name, address, phone, total\_price info (resource.get, record) --5 :: 2
-	4. should return empty when no orders in db --5 ::
 29. create payment
-	30. should return 201 when pay (resource.post) --15 ::
+	30. should return 201 when pay (resource.post) --15 :: 6
 	1. should 400 when input doesn't contain pay_type, amount -- 10 ::
 	3. --------------------------------------------------
 	31. should try to save the payment info into database and should able to get that payment after pay (resourc.post, repo.findByOrderId) --20 ::

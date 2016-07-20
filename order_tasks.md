@@ -19,7 +19,7 @@
 	3. should that one product's id are the same as expected (mapper-findAll) --10 :: 3
 	3. --------------------------------------------------
 	2. should the response body contains at least  one item info (resource.get, record) --10 ::
-	2. should the response body contains right uri, name, description, price info (resource.get, record) --5 ::
+	2. should the response body contains right uri, name, description, price info (resource.get, record) --5 :: 3
 	4. should return empty when no products in db --5 ::
 11. user register
 	11. should return 201 when register a new user (resource.post) --10 ::

@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
@@ -71,7 +72,11 @@ public class ProductApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(200));
         Map prodInfo = response.readEntity(Map.class);
-        assertThat(prodInfo.get("uri"), is(getOneUrl));
+        verifyProdResponseInfo(product, prodInfo);
+    }
+
+    private void verifyProdResponseInfo(Product product, Map prodInfo) {
+        assertThat(prodInfo.get("uri"), is(productBaseUrl + "/" + product.getId()));
         assertThat(prodInfo.get("name"), is(product.getName()));
         assertThat(prodInfo.get("description"), is(product.getDescription()));
         assertThat((double)prodInfo.get("price"), is(product.getPrice()));
@@ -95,6 +100,8 @@ public class ProductApiTest extends ApiSupport {
         Response response = get(productBaseUrl);
 
         assertThat(response.getStatus(), is(200));
-
+        List prods = response.readEntity(List.class);
+        assertThat(prods.size(), is(1));
+        verifyProdResponseInfo(product, (Map)prods.get(0));
     }
 }

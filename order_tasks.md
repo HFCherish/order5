@@ -29,7 +29,7 @@
 	14. should have tried to save the user info into database and should able to get a user after registered (repo.findById) --10 :: 6
 	16. should the user's id is the same as the saved one. (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --15 :: 6
 	3. -------------------------------------------------
-	4. should the creation uri contains user id in header location -- 5 ::
+	4. should the creation uri contains user id in header location -- 5 :: 2
 11. get one user
     1. should 200 when get some user --5 ::
     1. should contains right uri, name, id info when get user --15 ::

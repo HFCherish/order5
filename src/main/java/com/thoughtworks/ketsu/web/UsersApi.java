@@ -23,6 +23,6 @@ public class UsersApi {
                              @Context Routes routes) {
         new UserValidator().validate(userInfo);
         userRepository.save(userInfo);
-        return Response.created(routes.userUrl(null)).build();
+        return Response.created(routes.userUrl(userInfo.get("id").toString())).build();
     }
 }

@@ -23,7 +23,8 @@ public class UsersApiTest extends ApiSupport {
         Response response = post(usersBaseUrl, userJsonForTest(USER_NAME));
 
         assertThat(response.getStatus(), is(201));
-//        assertThat(response.getLocation().toString(), containsString(usersBaseUrl));
+        assertThat(response.getLocation().toString(), containsString(usersBaseUrl));
+        assertThat(response.getLocation().toString().matches(".*/\\d+$"), is(true));
     }
 
     @Test

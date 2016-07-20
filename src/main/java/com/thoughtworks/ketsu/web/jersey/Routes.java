@@ -1,7 +1,5 @@
 package com.thoughtworks.ketsu.web.jersey;
 
-import com.thoughtworks.ketsu.domain.Product;
-
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
@@ -18,6 +16,6 @@ public class Routes {
     }
 
     public URI userUrl(String userId) {
-        return URI.create(baseUri + "users");
+        return URI.create(baseUri + "users/" + userId);
     }
 }

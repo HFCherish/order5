@@ -1,4 +1,4 @@
-#tasks ()
+#tasks (8.6h :: 3.95h)
 2. product creation
 	2. should return 201 when create a product  (resource.post)  --10 :: 6
 	3. should contain creation uri in header location (resource.post) --10 :: 3
@@ -72,7 +72,7 @@
 	33. should the response body include right pay type info -- 12 ::
 	35. should the response body include right amount, order_uri & payment uri (resource.get) --15 :: 9
 	34. should the response body include right creating date (resoure.get, mapper-findByOrderId, record) --5 :: 4
-	4. should return 404 when no payment in db --5 ::
+	4. should return 404 when no payment in db --5 :: 1
 
 #databases
 1. product: 

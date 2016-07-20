@@ -79,4 +79,12 @@ public class PaymentApiTest extends ApiSupport {
         assertThat(payInfo.get("order_uri"), is("users/" + user.getId() + "/orders/" + order.getId()));
 
     }
+
+    @Test
+    public void should_404_when_get_payment_given_not_pay() {
+        Response response = get(paymentBaseUrl);
+
+        assertThat(response.getStatus(), is(404));
+
+    }
 }

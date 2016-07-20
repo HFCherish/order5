@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
+import java.util.Map;
+
 import static com.thoughtworks.ketsu.support.TestHelper.orderJsonForTest;
 import static com.thoughtworks.ketsu.support.TestHelper.prepareProduct;
 import static com.thoughtworks.ketsu.support.TestHelper.prepareUser;
@@ -48,6 +50,16 @@ public class OrderApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString(), containsString(orderBaseUrl));
         assertThat(response.getLocation().toString().matches(".*/\\d+$"), is(true));
+    }
+
+    @Test
+    public void should_400_when_create_order_given_invalid_input() {
+        Map orderInfo = orderJsonForTest(product);
+
+        //name empty
+        orderInfo.remove("name");
+        Response response = post(orderBaseUrl, orderInfo);
+        assertThat(response.getStatus(), is(400));
 
     }
 }

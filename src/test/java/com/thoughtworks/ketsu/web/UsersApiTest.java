@@ -15,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @RunWith(ApiTestRunner.class)
-public class UserApiTest extends ApiSupport {
+public class UsersApiTest extends ApiSupport {
     private String usersBaseUrl = "/users";
 
     @Test

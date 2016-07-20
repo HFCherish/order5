@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
+import java.util.Map;
+
 import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -46,6 +48,17 @@ public class PaymentApiTest extends ApiSupport {
         Response response = post( paymentBaseUrl, paymentJsonForTest());
 
         assertThat(response.getStatus(), is(201));
+
+    }
+
+    @Test
+    public void should_400_when_pay_given_invalid_input() {
+        Map payInfo = paymentJsonForTest();
+        payInfo.remove("pay_type");
+
+        Response response = post( paymentBaseUrl, payInfo);
+
+        assertThat(response.getStatus(), is(400));
 
     }
 }

@@ -19,6 +19,10 @@ public class PaymentApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response pay(Map payInfo) {
+        if(payInfo.get("pay_type") == null )
+            throw new IllegalArgumentException("must contains pay_type.");
+        if(payInfo.get("amount") == null )
+            throw new IllegalArgumentException("must contains amount.");
         return Response.created(URI.create("")).build();
     }
 }

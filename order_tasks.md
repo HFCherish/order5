@@ -63,7 +63,7 @@
     20. should the response body contain right name, address, phone, total\_price info (resource.get, record) --5 :: 2
 29. create payment
 	30. should return 201 when pay (resource.post) --15 :: 6
-	1. should 400 when input doesn't contain pay_type, amount -- 10 ::
+	1. should 400 when input doesn't contain pay_type, amount -- 10 :: 3
 	3. --------------------------------------------------
 	31. should try to save the payment info into database and should able to get that payment after pay (resourc.post, repo.findByOrderId) --20 ::
 	32. should the id of that payment is as expected (resourc.post, repo.save, mapper, database, record; repo.findByOrderId, mapper) --20 ::

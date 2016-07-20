@@ -1,17 +1,18 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.Product;
+import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import java.util.HashMap;
 
-import static com.thoughtworks.ketsu.support.TestHelper.PRODUCT_DESC;
-import static com.thoughtworks.ketsu.support.TestHelper.PRODUCT_NAME;
-import static com.thoughtworks.ketsu.support.TestHelper.productJsonForTest;
+import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -19,6 +20,9 @@ import static org.hamcrest.core.Is.is;
 @RunWith(ApiTestRunner.class)
 public class ProductApiTest extends ApiSupport {
     private String productBaseUrl = "/products";
+
+    @Inject
+    ProductRepository productRepository;
 
     @Test
     public void should_create_product() {
@@ -55,5 +59,15 @@ public class ProductApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(400));
 
+    }
+
+    @Test
+    public void should_get_one_product_successfully() {
+        Product product = prepareProduct(productRepository);
+
+        String getOneUrl = productBaseUrl + "/" + product.getId();
+        Response response = get(getOneUrl);
+
+        assertThat(response.getStatus(), is(200));
     }
 }

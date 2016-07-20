@@ -8,7 +8,7 @@
 	4. should that one product's id is the same as the created one (resourc.post, repo.save, mapper, database, records; repo.findById, mapper) --15 :: 12
 	4. should the creation uri contains product id in header location -- 5 :: 2
 6. get some product
-	6. should return 200 when get some product (resource.get) --10 ::
+	6. should return 200 when get some product (resource.get) --10 :: 5
 	7. should the response body contains uri, id, name, description, price info (resource.get) --15 ::
 	3. --------------------------------------------------
 	4. should return 404 when no products in db --5 ::

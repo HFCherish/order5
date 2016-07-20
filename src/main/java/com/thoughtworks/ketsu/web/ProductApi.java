@@ -1,12 +1,11 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.validators.ProductValidator;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -24,5 +23,12 @@ public class ProductApi {
         new ProductValidator().validate(productInfo);
         productRepository.save(productInfo);
         return Response.created(routes.productUrl(productInfo.get("id").toString())).build();
+    }
+
+    @Path("{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Product getOne() {
+        return new Product();
     }
 }

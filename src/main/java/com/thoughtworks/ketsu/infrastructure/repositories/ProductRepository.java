@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface ProductRepository {
     void save(Map productInfo);
 
-    Optional<Product> findById(Object id);
+    Optional<Product> findById(long id);
 }

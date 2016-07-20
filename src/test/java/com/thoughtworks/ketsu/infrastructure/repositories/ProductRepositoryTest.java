@@ -6,14 +6,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import javax.swing.text.html.Option;
-
 import java.util.Map;
 import java.util.Optional;
 
 import static com.thoughtworks.ketsu.support.TestHelper.productJsonForTest;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 @RunWith(ApiTestRunner.class)
 public class ProductRepositoryTest {
@@ -25,9 +23,11 @@ public class ProductRepositoryTest {
         Map productInfo = productJsonForTest();
 
         productRepository.save(productInfo);
-        Optional<Product> fetched = productRepository.findById(productInfo.get("id"));
+        Long id = Long.valueOf(productInfo.get("id").toString());
+        Optional<Product> fetched = productRepository.findById(id);
 
         assertThat(fetched.isPresent(), is(true));
+        assertThat(fetched.get().getId(), is(id));
 
     }
 }

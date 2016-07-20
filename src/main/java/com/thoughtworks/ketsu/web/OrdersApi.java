@@ -40,6 +40,6 @@ public class OrdersApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Order> getAll() {
-        return new ArrayList<>();
+        return user.getAllOrders();
     }
 }

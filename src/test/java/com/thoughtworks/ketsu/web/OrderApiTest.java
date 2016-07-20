@@ -81,7 +81,8 @@ public class OrderApiTest extends ApiSupport {
         Response response = get(getOneUrl);
 
         assertThat(response.getStatus(), is(200));
-
+        Map orderInfo = response.readEntity(Map.class);
+        assertThat(orderInfo.get("uri"), is(getOneUrl));
 
     }
 }

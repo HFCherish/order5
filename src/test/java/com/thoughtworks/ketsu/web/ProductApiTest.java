@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -69,5 +70,10 @@ public class ProductApiTest extends ApiSupport {
         Response response = get(getOneUrl);
 
         assertThat(response.getStatus(), is(200));
+        Map prodInfo = response.readEntity(Map.class);
+        assertThat(prodInfo.get("uri"), is(getOneUrl));
+        assertThat(prodInfo.get("name"), is(product.getName()));
+        assertThat(prodInfo.get("description"), is(product.getDescription()));
+        assertThat((double)prodInfo.get("price"), is(product.getPrice()));
     }
 }

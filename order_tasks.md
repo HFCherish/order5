@@ -9,7 +9,7 @@
 	4. should the creation uri contains product id in header location -- 5 :: 2
 6. get some product
 	6. should return 200 when get some product (resource.get) --10 :: 5
-	7. should the response body contains uri, id, name, description, price info (resource.get) --15 ::
+	7. should the response body contains right uri, name, description, price info (resource.get) --15 :: 6
 	3. --------------------------------------------------
 	4. should return 404 when no products in db --5 ::
 6. get all products

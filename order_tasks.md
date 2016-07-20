@@ -35,7 +35,7 @@
     1. should contains right uri, name, id info when get user --15 :: 5
     1. should 404 when user doesn't exist --5 :: 1
 18. order creation
-	18. should return 201 when creating an order (resource.post) --15 ::
+	18. should return 201 when creating an order (resource.post) --15 :: 7
 	19. should include the creation uri in header location (resource.post) --2 ::
 	3. --------------------------------------------------
 	20. should have tried to save the order info into database and should able to get the order after created order (repo.findById) --15 ::

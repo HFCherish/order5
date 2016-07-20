@@ -1,13 +1,18 @@
 package com.thoughtworks.ketsu.domain;
 
+import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.OrderMapper;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
+import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class User implements Record{
+    @Inject
+    OrderMapper orderMapper;
+
     private long id;
     private String name;
 
@@ -34,10 +39,10 @@ public class User implements Record{
     }
 
     public void placeOrder(Map orderInfo) {
-
+        orderMapper.save(orderInfo, getId());
     }
 
     public Optional<Order> getOrderById(long id) {
-        return Optional.ofNullable(new Order());
+        return Optional.ofNullable(orderMapper.findById(id));
     }
 }

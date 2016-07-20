@@ -26,7 +26,9 @@ public class OrderItem implements Record{
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
         return new HashMap<String, Object>() {{
-
+            put("product_id", getProductId());
+            put("amount", getAmount());
+            put("quantity", getQuantity());
         }};
     }
 
